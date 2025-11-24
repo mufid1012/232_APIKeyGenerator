@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Key System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #0b1229;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .main-card {
+      width: 100%;
+      max-width: 550px;
+      padding: 40px 35px;
+      background: #131c3a;
+      border-radius: 15px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.7);
+      text-align: center;
+      color: #e8e8e8;
+      border: 2px solid #1c2750;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #f7d117;
+      text-shadow: 0 0 8px rgba(255, 208, 0, 0.6);
+    }
+
+    p {
+      color: #b9c2e0;
+    }
+
+    .btn-redbull {
+      font-size: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      width: 100%;
+      color: #fff;
+      background: #e10600;
+      border: none;
+      box-shadow: 0 0 10px rgba(225, 6, 0, 0.6);
+      transition: 0.2s;
+    }
+
+    .btn-redbull:hover {
+      background: #ff1e00;
+      box-shadow: 0 0 15px rgba(255, 50, 20, 0.9);
+    }
+
+    .btn-darkbull {
+      background: #0a143b;
+      font-size: 18px;
+      padding: 12px;
+      border-radius: 10px;
+      width: 100%;
+      color: #f7d117;
+      border: 1px solid #f7d117;
+      transition: 0.2s;
+    }
+
+    .btn-darkbull:hover {
+      background: #131c3a;
+      box-shadow: 0 0 12px rgba(255, 208, 0, 0.7);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-card">
+    <h1>Oracle Red Bull Racing API System</h1>
+    <p>Manage users, generate API keys & enter admin garage.</p>
+
+    <a href="/api-key-form.html" class="btn btn-redbull">
+      ➕ Create User + API Key
+    </a>
+
+    <a href="/admin-login.html" class="btn btn-darkbull">
+      🔐 Admin Login
+    </a>
+  </div>
+</body>
+</html>

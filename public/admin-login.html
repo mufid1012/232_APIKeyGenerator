@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Garage Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #0b1229;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #eee;
+    }
+
+    .login-card {
+      max-width: 520px;
+      width: 100%;
+      background: #131c3a;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+      border: 2px solid #1c2750;
+    }
+
+    label {
+      color: #f7d117;
+      font-weight: bold;
+    }
+
+    .btn-redbull {
+      width: 100%;
+      background: #e10600;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 0 12px rgba(225,6,0,0.5);
+    }
+
+    .btn-redbull:hover {
+      background: #ff1e00;
+      box-shadow: 0 0 18px rgba(255,40,0,0.8);
+    }
+
+    .admin-buttons button {
+      width: 180px;
+      margin: 8px;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .btn-blue {
+      background: #0a143b;
+      border: 1px solid #f7d117;
+      color: #f7d117;
+    }
+
+    .btn-green {
+      background: #007f5f;
+      border: none;
+    }
+
+    .result-box {
+      max-width: 700px;
+      width: 100%;
+      background: #1a254d;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      border: 1px solid #f7d117;
+      box-shadow: 0 0 12px rgba(255,208,0,0.4);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-card">
+    <h3 class="text-center mb-4" style="color:#f7d117;">Admin Garage Login</h3>
+
+    <form id="loginForm">
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" required>
+      </div>
+
+      <button class="btn-redbull">Login</button>
+    </form>
+  </div>
+
+  <div class="admin-buttons mt-4 text-center">
+    <button id="btnUsers" class="btn btn-blue">📄 List Users</button>
+    <button id="btnKeys" class="btn btn-green">🔑 List Keys</button>
+  </div>
+
+  <div class="result-box">
+    <pre id="output" class="m-0"></pre>
+  </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const output = document.getElementById("output");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new URLSearchParams(new FormData(form));
+
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: data
+      });
+
+      const json = await res.json();
+      output.textContent = JSON.stringify(json, null, 2);
+
+      if (json.token) {
+        alert("Login success!");
+        localStorage.setItem("adminToken", json.token);
+      }
+    });
+
+    document.getElementById("btnUsers").addEventListener("click", async () => {
+      const token = localStorage.getItem("adminToken");
+      const res = await fetch("/api/users", {
+        headers: { Authorization: "Bearer " + token }
+      });
+      output.textContent = JSON.stringify(await res.json(), null, 2);
+    });
+
+    document.getElementById("btnKeys").addEventListener("click", async () => {
+      const token = localStorage.getItem("adminToken");
+      const res = await fetch("/api/apikeys", {
+        headers: { Authorization: "Bearer " + token }
+      });
+      output.textContent = JSON.stringify(await res.json(), null, 2);
+    });
+  </script>
+
+</body>
+</html>

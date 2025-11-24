@@ -6,85 +6,96 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background: #0b1229;
+      background: #f4f4f4;
       height: 100vh;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #222;
     }
 
     .main-card {
       width: 100%;
-      max-width: 550px;
-      padding: 40px 35px;
-      background: #131c3a;
-      border-radius: 15px;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.7);
+      max-width: 520px;
+      padding: 32px 28px;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
       text-align: center;
-      color: #e8e8e8;
-      border: 2px solid #1c2750;
+      border: 1px solid #e0e0e0;
     }
 
     h1 {
-      font-size: 28px;
-      font-weight: 700;
-      color: #f7d117;
-      text-shadow: 0 0 8px rgba(255, 208, 0, 0.6);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     p {
-      color: #b9c2e0;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 24px;
     }
 
-    .btn-redbull {
-      font-size: 18px;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 12px;
+    .btn-primary-mono,
+    .btn-outline-mono {
+      display: block;
       width: 100%;
+      font-size: 14px;
+      padding: 11px;
+      border-radius: 9px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+    }
+
+    .btn-primary-mono {
+      background: #111;
       color: #fff;
-      background: #e10600;
-      border: none;
-      box-shadow: 0 0 10px rgba(225, 6, 0, 0.6);
-      transition: 0.2s;
+      border: 1px solid #111;
     }
 
-    .btn-redbull:hover {
-      background: #ff1e00;
-      box-shadow: 0 0 15px rgba(255, 50, 20, 0.9);
+    .btn-primary-mono:hover {
+      background: #000;
+      color: #fff;
+      transform: translateY(-1px);
     }
 
-    .btn-darkbull {
-      background: #0a143b;
-      font-size: 18px;
-      padding: 12px;
-      border-radius: 10px;
-      width: 100%;
-      color: #f7d117;
-      border: 1px solid #f7d117;
-      transition: 0.2s;
+    .btn-outline-mono {
+      background: #fff;
+      color: #111;
+      border: 1px solid #111;
     }
 
-    .btn-darkbull:hover {
-      background: #131c3a;
-      box-shadow: 0 0 12px rgba(255, 208, 0, 0.7);
+    .btn-outline-mono:hover {
+      background: #111;
+      color: #fff;
+      transform: translateY(-1px);
     }
   </style>
 </head>
 
 <body>
   <div class="main-card">
-    <h1>Oracle Red Bull Racing API System</h1>
-    <p>Manage users, generate API keys & enter admin garage.</p>
+    <h1>API Key System</h1>
+    <p>Manage users, generate API keys, and access admin tools in a simple monochrome interface.</p>
 
-    <a href="/api-key-form.html" class="btn btn-redbull">
-      ➕ Create User + API Key
+    <a href="/api-key-form.html" class="btn-primary-mono">
+      Create User + API Key
     </a>
 
-    <a href="/admin-login.html" class="btn btn-darkbull">
-      🔐 Admin Login
+    <a href="/admin-login.html" class="btn-outline-mono">
+      Admin Login
     </a>
   </div>
 </body>
